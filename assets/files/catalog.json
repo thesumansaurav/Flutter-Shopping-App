@@ -1,0 +1,58 @@
+{
+    "products":[
+        {
+            "id": "001",
+            "name": "phone",
+            "color": "#33505a",
+            "price": 999,
+            "desc": "this is iphone from Apple Inc",
+            "image": "https://images.macrumors.com/t/9r84bU_ZTOTrUixxwhjHUFsAvD4=/800x0/smart/article-new/2017/09/iphonexdesign.jpg?lossy"
+
+        },
+        {
+            "id": "002",
+            "name": "iPhone",
+            "color": "#33005a",
+            "price": 99,
+            "desc": "this is iphone from Apple Inc Usa",
+            "image": "https://images.macrumors.com/t/9r84bU_ZTOTrUixxwhjHUFsAvD4=/800x0/smart/article-new/2017/09/iphonexdesign.jpg?lossy"
+
+        },
+        {
+            "id": "003",
+            "name": "Xiaomi",
+            "color": "#03505a",
+            "price": 9,
+            "desc": "this is phone from Mi Inc China",
+            "image": "https://images.macrumors.com/t/9r84bU_ZTOTrUixxwhjHUFsAvD4=/800x0/smart/article-new/2017/09/iphonexdesign.jpg?lossy"
+
+        },
+        {
+            "id": "004",
+            "name": "Tablet",
+            "color": "#33055a",
+            "price": 999,
+            "desc": "this is Tablet from Apple Inc",
+            "image": "https://images.macrumors.com/t/9r84bU_ZTOTrUixxwhjHUFsAvD4=/800x0/smart/article-new/2017/09/iphonexdesign.jpg?lossy"
+
+        },
+        {
+            "id": "005",
+            "name": "Samsung",
+            "color": "#33505e",
+            "price": 399,
+            "desc": "this is phone from samsun inc from Korea",
+            "image": "https://images.macrumors.com/t/9r84bU_ZTOTrUixxwhjHUFsAvD4=/800x0/smart/article-new/2017/09/iphonexdesign.jpg?lossy"
+
+        },
+        {
+            "id": "006",
+            "name": "Nokia",
+            "color": "#3f505e",
+            "price": 405,
+            "desc": "this is phone from samsun inc from Korea",
+            "image": "https://images.macrumors.com/t/9r84bU_ZTOTrUixxwhjHUFsAvD4=/800x0/smart/article-new/2017/09/iphonexdesign.jpg?lossy"
+
+        }
+    ]
+}
