@@ -1,13 +1,16 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:myapp/models/catalog.dart';
-import 'package:myapp/widgets/drawer.dart';
+import 'package:myapp/utils/routes.dart';
 import 'package:myapp/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../widgets/item_widget.dart';
+import '../widgets/home_widgets/catalog_header.dart';
+import '../widgets/home_widgets/catalog_list.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -37,6 +40,11 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyTheme.creameColor,
+      floatingActionButton: FloatingActionButton(
+        onPressed: ()=> Navigator.pushNamed(context, MyRoutes.cartRoute),
+        backgroundColor: MyTheme.darkBluishColor,
+        child: const Icon(CupertinoIcons.cart),
+      ),
         body: SafeArea(
           child: Container(
             padding: Vx.m32,
@@ -47,7 +55,7 @@ class _HomePageState extends State<HomePage> {
                 if(CatalogModel.items != null)
                   CatalogList().expand()
                 else
-                  const Center(child: CircularProgressIndicator(),)
+                  const CircularProgressIndicator().centered().expand(),
               ],
             ),
           ),
@@ -56,88 +64,3 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class CatalogHeader extends StatelessWidget {
-  const CatalogHeader({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                "Catalog App".text.xl5.bold.color(MyTheme.darkBluishColor).make(),
-                "Trending products".text.xl2.make(),
-              ],
-            );
-  }
-}
-
-class CatalogList extends StatelessWidget {
-  const CatalogList({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-      itemCount : CatalogModel.items!.length,
-      itemBuilder: (context, index) {
-        final catalog = CatalogModel.items![index];
-        return  CatalogItem(catalog: catalog);
-      },
-      );
-  }
-}
-
-class CatalogItem extends StatelessWidget {
-  final Item catalog;
-  
-  const CatalogItem({super.key, required this.catalog});
-
-  @override
-  Widget build(BuildContext context) {
-    return VxBox(
-      child: Row(
-        children: [
-         CatalogImage(image:catalog.image),
-         Expanded(          
-          child: Column(           
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-            catalog.name.text.lg.color(MyTheme.darkBluishColor).bold.make(),
-            catalog.desc.text.textStyle(context.captionStyle).make(),
-            ButtonBar(
-              buttonPadding: EdgeInsets.zero,
-              alignment: MainAxisAlignment.spaceBetween,
-              children: [
-                "\$${catalog.price}".text.bold.lg.make(),
-                ElevatedButton(
-                  onPressed: (){}, 
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(MyTheme.darkBluishColor),
-                    shape: MaterialStateProperty.all(const StadiumBorder(),
-                    )
-                  ),
-                  child: "Add".text.make(),
-                  )
-              ],
-            ).pOnly(right: 8)
-          ],
-          )
-          )
-      ],
-      )
-    ).white.roundedLg.square(120).make().py(16);
-  }
-}
-
-class CatalogImage extends StatelessWidget {
-  final String image;
-  const CatalogImage({super.key, required this.image});
-
-  @override
-  Widget build(BuildContext context) {
-    return  Image.network(
-            image
-            ).box.rounded.p8.color(MyTheme.creameColor).make().p16();
-  }
-}
